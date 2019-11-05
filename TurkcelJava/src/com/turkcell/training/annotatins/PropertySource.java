@@ -13,5 +13,5 @@ import java.lang.annotation.Target;
 public @interface PropertySource {
 
 	String value();
-	String it() default "xyz.properties";
+	String fallback() default "application.properties";
 }

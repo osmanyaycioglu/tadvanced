@@ -1,6 +1,6 @@
 package com.turkcell.training.annotatins;
 
-@PropertySource("my.properties")
+@PropertySource(value = "my.properties",fallback = "test.properties")
 public class ServerConnection {
 	@Property("server.port")
 	private int port;

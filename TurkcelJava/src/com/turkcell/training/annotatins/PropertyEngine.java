@@ -3,6 +3,7 @@ package com.turkcell.training.annotatins;
 import java.io.FileInputStream;
 import java.lang.reflect.Field;
 import java.util.Properties;
+import java.util.UUID;
 
 public class PropertyEngine<T> {
 	public T processClass(Class<T> tClass) throws Exception {
@@ -10,6 +11,9 @@ public class PropertyEngine<T> {
 		if (propertySource == null) {
 			return  null;
 		}
+		
+		String uuidString = UUID.randomUUID().toString();
+		
 		Properties properties = new Properties();
 		properties.load(new FileInputStream(propertySource.value()));
 		
