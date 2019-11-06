@@ -1,18 +1,21 @@
 package com.turkcell.training.mt;
 
 public class SingletonPattern {
-	
-	private static SingletonPattern instance;
-	
+
+	private volatile static SingletonPattern instance ;
+
 	private SingletonPattern() {
 	}
-	
+
 	public static SingletonPattern getInstance() {
 		if (instance == null) {
-			instance = new SingletonPattern();
+			synchronized (SingletonPattern.class) {
+				if (instance == null) {
+					instance = new SingletonPattern();
+				}
+			}
 		}
 		return instance;
-		
 	}
-	
+
 }
