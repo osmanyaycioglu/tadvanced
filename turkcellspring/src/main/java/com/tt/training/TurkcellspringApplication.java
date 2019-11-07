@@ -27,7 +27,7 @@ public class TurkcellspringApplication {
 	}
 	
 	@Autowired
-	public void methodWiring(IMyInterface myInterface) {
+	public void methodWiring(@Qualifier("test") IMyInterface myInterface) {
 		myInterface.execute();
 	}
 
