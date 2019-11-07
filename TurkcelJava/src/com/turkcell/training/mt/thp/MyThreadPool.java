@@ -32,6 +32,7 @@ public class MyThreadPool {
 			while (true) {
 				try {
 					Runnable take = runQueue.take();
+					runQueue.poll();
 					take.run();
 				} catch (Exception e) {
 					e.printStackTrace();

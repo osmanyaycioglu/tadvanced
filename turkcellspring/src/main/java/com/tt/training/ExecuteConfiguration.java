@@ -1,5 +1,9 @@
 package com.tt.training;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,9 +11,16 @@ import org.springframework.boot.autoconfigure.web.embedded.TomcatWebServerFactor
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.tt.MyExecute3;
 
+@EnableAsync
+@EnableScheduling
 @Configuration
 public class ExecuteConfiguration {
 	
@@ -21,6 +32,15 @@ public class ExecuteConfiguration {
 		return new MyExecute1();
 	}
 	
+	@Bean
+	public ExecutorService createThreadPool() {
+		return Executors.newFixedThreadPool(10);
+	}
+	
+	@Async("createThreadPool")
+	public Future<String> myAsyncMethod(){
+		return AsyncResult.forValue("hello world");
+	}
 	
 	
 	@Bean

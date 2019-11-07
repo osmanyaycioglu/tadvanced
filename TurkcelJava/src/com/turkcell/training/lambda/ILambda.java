@@ -1,4 +1,4 @@
-package com.turkcell.training.lambda;
+package  com.turkcell.training.lambda;
 
 @FunctionalInterface
 public interface ILambda {
