@@ -3,6 +3,7 @@ package com.tt.training.jpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.util.concurrent.ListenableFuture;
 
 @Component
 public class MyRunner implements CommandLineRunner{
