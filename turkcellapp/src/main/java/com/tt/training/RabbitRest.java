@@ -19,4 +19,10 @@ public class RabbitRest {
 		rt.convertAndSend("tc-direct","com.tc.cdr",msg);
 		return "ok";
 	}
+
+	@GetMapping("/sendtopic/{message}")
+	public String sendMessage2(@PathVariable("message") String msg) {
+		rt.convertAndSend("tc-topic","com.araba.tasit",msg);
+		return "ok";
+	}
 }

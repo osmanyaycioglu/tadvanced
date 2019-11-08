@@ -12,6 +12,7 @@ import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -57,12 +58,12 @@ public class TurkcellappApplication {
 	}
 
 	@Bean
-	public Binding myBinding1(DirectExchange exchange) {
+	public Binding myBinding1(@Qualifier("myDirectExchange") DirectExchange exchange) {
 		return BindingBuilder.bind(myQueue1()).to(exchange).with("com.tc.cdr");
 	}
 
 	@Bean
-	public Binding myBinding2(DirectExchange exchange) {
+	public Binding myBinding2(@Qualifier("myDirectExchange") DirectExchange exchange) {
 		return BindingBuilder.bind(myQueue2()).to(exchange).with("com.tc.tdr");
 	}
 
